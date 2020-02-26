@@ -21,6 +21,8 @@ docker build --build-arg http_proxy=<your_http_proxy> --build-arg https_proxy=<y
 
 ## Usage
 
+- Install `nvidia-container-toolkit`.
+
 - For the first time before starting a container, setup X11 socket and X11 auth files:
 
 ```shell
@@ -32,7 +34,7 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 - Run a container with interactive bash:
 
 ```shell
-nvidia-docker run -it \
+docker run -it \
     --gpus all \
     --env "DISPLAY" \
     --volume /tmp/.X11-unix:/tmp/.X11-unix:rw \
